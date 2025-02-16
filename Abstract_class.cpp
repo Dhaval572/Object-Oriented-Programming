@@ -1,27 +1,44 @@
-// Abstract class 
+// Implementation of pure virtual function
 #include <iostream>
 using namespace std;
 
-class A
+// Main abstract class
+class Base
 {
 public:
-    
-    virtual void greet() = 0;
+
+    virtual void show() = 0;
 };
 
-class B : public A
+// Derived abstract class
+class Mid : public Base
 {
 public:
 
-    void greet() override
+    virtual void display() = 0;
+};
+
+// Main Derived class 
+class Final : public Base, Mid
+{
+public:
+
+    void show()
     {
-        cout << "Good Afternoon all!";
+        cout << "Base class function" << endl;
+    }
+
+    void display()
+    {
+        cout << "Mid class function" << endl;
     }
 };
 
 int main()
 {
-    B obj;
-    obj.greet();
+    Final obj;
+    obj.show();
+    obj.display();
+
     return 0;
 }
